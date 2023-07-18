@@ -290,26 +290,16 @@ input[type="search"]
 
 	</style>
 
-<div class="headerd" style="height: 70px;margin-left: 266px;">
-
-  <div class="box">
-      <div class="box-search">
-        <input type="search" placeholder="Tìm kiếm ...">
-      </div>
-    </div>
-
-</div>
 
 <div class='dashboard'>
     <div class="dashboard-nav">
         <header>
-            <a href="#" class="menu-toggle">MY </a>
-            <a href="#" class="brand-logo"> <span>MUSIC</span></a>
+            <img src="https://marketingai.admicro.vn/wp-content/uploads/2018/10/Chien-luoc-Marketing-cua-FPT-Shop-1.png" width="100px" height="80px">
         </header>
         <nav class="dashboard-nav-list">
             <a href="{{ route('index')}}" class="dashboard-nav-item"> Home Page</a>
             <a href="{{ route('users.index_user')}}" class="dashboard-nav-item active"> Users Management</a>
-            <a href="{{ route('category.index')}}" class="dashboard-nav-item"> Categorys Management </a>
+            <a href="{{ route('category.index')}}" class="dashboard-nav-item"> Category Management </a>
             <a href="{{ route('product.index')}}" class="dashboard-nav-item"> Products Management </a>
             <a href="#" class="dashboard-nav-item">    </a>
             <div class="nav-item-divider"></div>

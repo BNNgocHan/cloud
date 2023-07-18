@@ -59,17 +59,6 @@
 </div>
 
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-
-    <div class="form-group">
-    
-    <strong>Singer:</strong>
-    
-    <input type="text" name="singer" class="form-control" placeholder="Singer">
-    
-    </div>
-    
-    </div>
 
 <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -92,15 +81,7 @@
 <input type="file" class="form-control" placeholder="Image" value="" name="imageProduct" />
 
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="form-group">
-    
-<strong>Audio:</strong>
-    
-<input type="file" class="form-control" placeholder="Audio" value="" name="audioProduct" />
-    
-</div>
 <div class="col-xs-12 col-sm-12 col-md-12">
 
 <div class="form-group">

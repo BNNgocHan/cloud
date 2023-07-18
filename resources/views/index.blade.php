@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DJCloud - Trang chủ</title>
+    <title>FPT SHOP - Home</title>
 
  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"> -->
 
@@ -20,8 +20,6 @@
 <body class="fullbody" style=" background-color: #FFFACD;">
 
 @include('layout.headerindex')
-
-
 
 
 @include('layout.spnoibat')

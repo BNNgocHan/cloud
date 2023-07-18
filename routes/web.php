@@ -9,7 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AmnhacController;
 use App\Http\Controllers\UserController;
-
+use Illuminate\Support\Facades\Auth;
 
 // đăng ký
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -33,8 +33,6 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 //đăng nhập trang dashboard
 Route::post('/adminlogin', [AdminLoginController::class, 'adminlogin'])->name('adminlogin');
 Route::get('/adminlogin', [AdminLoginController::class, 'showAdminLoginForm'])->name('adminlogin');
-
-
 
 
 //hiển thị user 
@@ -70,6 +68,7 @@ Route::get('/products/search', [ProductController::class, 'search'])->name('prod
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 
 

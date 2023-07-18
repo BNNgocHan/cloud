@@ -36,17 +36,7 @@
 </div>
 
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12">
 
-    <div class="form-group">
-    
-    <strong>Singer:</strong>
-    
-    {{ $product->singer }}
-    
-    </div>
-    
-    </div>
 
 <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -59,17 +49,7 @@
 </div>
 
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12">
 
-    <div class="form-group">
-    
-    <strong>Audio:</strong>
-    
-    <img src="{{ asset('audio/product/'.$product->audio) }}" alt="" border=3 height=150 width=200>
-    
-    </div>
-    
-    </div>
 
 <div class="col-xs-12 col-sm-12 col-md-12">
 

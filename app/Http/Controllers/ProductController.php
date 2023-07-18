@@ -53,10 +53,8 @@ class ProductController extends Controller
             $validator = Validator::make($request->all(), [
             
             'name' => 'required',
-            'singer' => 'required',
             'description' => 'required',
             'imageProduct' => 'required|image|mimes:jpg,jpeg,png',
-            'audioProduct' =>'required|mimes:audio/mpeg,mpga,mp3,wav,aac,mp4',
             'price' => 'required'
             
             ]);
@@ -82,30 +80,14 @@ class ProductController extends Controller
             $fileName = 'noname.jpg';
             
             }
-            if ($request->hasFile('audioProduct')) {
             
-                $File = $request->file('audioProduct');
-                
-                $Path = public_path('audio/product');
-                
-                $file_Name = time() . '_' . $File->getClientOriginalName();
-                
-                $File->move($Path, $file_Name);
-                
-                } else {
-                
-                $file_Name = 'noname.mp3';
-                
-                }
             
             $newProduct = new Product();
             
             $newProduct->name = $request->name;
-            $newProduct->singer = $request->singer;
             $newProduct->price = $request->price;
             $newProduct->description = $request->description;
             $newProduct->image = $fileName;
-            $newProduct->audio=$file_Name;
             $newProduct->category_id = $request->category;
             $newProduct->save();
             
@@ -140,7 +122,6 @@ return view('product.edit', ['product' => $product, 'categories' => $categories]
             $validator = Validator::make($request->all(), [
             
             'name' => 'required',
-            'singer' => 'required',
             'description' => 'required',
             'price' => 'required'
             

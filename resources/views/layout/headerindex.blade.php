@@ -1,30 +1,36 @@
 
 <link rel="shortcut icon" type="image/x-icon" href="/path/to/favicon.ico"><div class="header" style="top: 0px;">
-            <div class="brand">
-                <h1 class="red">My</h1>
-                <h1 class="red">Music</h1>
-            </div>
             <div class="main-nav">
+                <a>
+                    <img src="https://marketingai.admicro.vn/wp-content/uploads/2018/10/Chien-luoc-Marketing-cua-FPT-Shop-1.png" width="100px" height="80px">
+                </a>
                 <a href="{{ route('index')}}" class="button-container">
                     <h2>HOME</h2>
                 </a>
                 <a href="#" class="button-container">
-                    <h2>SONGS</h2>
+                    <h2>PHONE</h2>
+                </a>
+                <a href="cart" class="button-container">
+                    <h2>LAPTOP</h2>
                 </a>
                 <a href="#" class="button-container">
-                    <h2>TRENDING</h2>
+                    <h2>ACCESSORY</h2>
                 </a>
                 
                 {{-- <a href="#" class="button-container">
                     <h2>SEARCH</h2>
                 </a> --}}
                 <a href="{{ route('dashboard')}}" class="button-container">
-                    <h2>ADD NEW PRODUCT</h2>
+                    <h2>MANAGEMENT</h2>
                 </a>
                 <form action="{{ route('products.search') }}" method="GET">
-                    <input type="text" name="search" placeholder="Song Search">
+                    <input type="text" name="search" placeholder="Search">
                     <button type="submit">Search</button>
                 </form>
+                <a>
+                    <img src="https://th.bing.com/th/id/R.168974f0a202a19888e8b017e4d65249?rik=vi7EGCSvdxsJUQ&riu=http%3a%2f%2fgetdrawings.com%2fvectors%2fshopping-cart-logo-vector-1.png&ehk=78EnuYkQr4dJ25tFVnk%2fBFiLcJ%2b4PoIX%2fBLZHHREh%2fY%3d&risl=&pid=ImgRaw&r=0" width="40px" height="50px" style="margin-left: 80px">
+                    
+                </a>
             </div>
             @if ($user)
 <div class="avatar">

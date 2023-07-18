@@ -3,8 +3,8 @@
 margin: 0;
 padding: 0;
 background: #642B73;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #c67242, #be4743);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #c8775a, #be4242); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: -webkit-linear-gradient(to right, #ffffff, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ffffff, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 font-family: spotify-circular,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
 }
 .wrapper {
@@ -30,7 +30,6 @@ height: 180px;
 margin: 15px;
 position: relative;
 min-width: 190px;
-background: #000;
 }
 .card:hover .overlayer {
 visibility: visible;
@@ -48,9 +47,9 @@ margin-top: 180px;
 
 .card .title a {
 top: -175px;
-color: #fff;
+color: #000000;
 position: relative;
-font-size: 13px;
+font-size: 15px;
 text-decoration: none;
 }
 
@@ -84,9 +83,8 @@ transform: scale(1.1);
 
 <body>
     <div class="wrapper">
-        <h1>Playlists</h1>
         @foreach($products->chunk(7) as $productChunk)
-        <div class="cards" style="margin-top: 120px;">
+            <div class="cards" style="margin-top: 120px;">
                 @foreach($productChunk as $product)
                     <div class="card">
                         <div class="overlayer">
@@ -95,17 +93,25 @@ transform: scale(1.1);
                         <img src="{{ asset('image/product/'.$product->image) }}" alt="">
                         <br>
                         <br>
-                        <audio controls="" id="song" style="width: 190px;">
-                            <source src="{{ asset('audio/product/'.$product->audio) }}" type="audio/mpeg">
-                        </audio>
+                        
                         <div class="title">
-                            <a href="#">Name Song : {{ $product->name }}</a>
-                            <br>
-                            <a href="#">Singer : {{ $product->singer }}</a>
+                            
+                                <a href="#">{{ $product->name }}</a>
+                                <br>
+                                <a href="#">Price : {{ $product->price }}</a>
+                                 <br>   
+                                <button type="button" class="btn btn-primary">Add to cart</button>    
                         </div>
                     </div>	
+                    {{-- <div class="card">
+                        <img src="{{ asset('image/product/'.$product->image) }}" alt="" style="width:100%">
+                        <h1><a href="#">{{ $product->name }}</a></h1>
+                        <a href="#">Price : {{ $product->price }}</a>
+                        <p><button>Add to Cart</button></p>
+                      </div> --}}
                 @endforeach
             </div>
+            
         @endforeach
     </div>
 

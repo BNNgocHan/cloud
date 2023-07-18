@@ -45,14 +45,12 @@
         <th>No</th>
         
         <th>Name</th>
-        <th>Singer</th>
         
         <th>Price</th>
         
         <th>Category</th>
         
         <th>Image</th>
-        <th>Audio</th>
         
         <th>Details</th>
         
@@ -67,7 +65,6 @@
         <td>{{$key+1}}</td>
         
         <td>{{ $product->name }}</td>
-        <td>{{ $product->singer }}</td>
         
         <td>{{ $product->price }}</td>
         
@@ -75,18 +72,7 @@
         
         <td><img src="{{ asset('image/product/'.$product->image) }}" alt="" border=3 height=115 width=200></td>
         <td>
-            <audio controls controlsList="nodownload" style="width: 250px;" ontimeupdate="myAudio(this)">
-                <source src="{{ asset('audio/product/'.$product->audio) }}" type="audio/mpeg">
-                </audio>
-                <script type="text/javascript">
-                    function myAudio(event){
-                        if(event.currentTime>30){
-                            event.currentTime=0;
-                            event.pause();
-                            alert("Bạn phải trả phí để nghe cả bài")
-                        }
-                    }
-                </script>
+           
 </td>
         
         <td>{{ $product->description }}</td>

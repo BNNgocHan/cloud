@@ -8,7 +8,7 @@
 
     <!-- td -->
     <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
-     <title>Featured products</title>
+     <title></title>
     <!-- form -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> --}}
     <style>
@@ -18,21 +18,9 @@
     padding: 40px;
 }   */
 
-img { max-width:100%; }
+/* img { max-width:100%; } */
 
-a {
-	-webkit-transition: all 150ms ease;
-	-moz-transition: all 150ms ease;
-	-ms-transition: all 150ms ease;
-	-o-transition: all 150ms ease;
-	transition: all 150ms ease; 
-	}
-    a:hover {
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE 8 */
-        filter: alpha(opacity=50); /* IE7 */
-        opacity: 0.6;
-        text-decoration: none;
-    }
+
 
 
 /* Container */
@@ -62,44 +50,11 @@ a {
 
 
 /* Thumbnail Box */
-.caption h4 {
-    font-size: 1rem;
-    color: #444;
-    }
-    .caption p {
-        font-size: 0.75rem;
-        color: #ffffff;
-        }
-        .btn.btn-mini {
-            font-size: 0.63rem;
-            }
-
-
-/* Carousel Control */
-.control-box {
-    text-align: right;
-    width: 100%;
-    }
-    
-.carousel-control{
-    background: #666;
-    border: 0px;
-    border-radius: 0px;
-    display: inline-block;
-    font-size: 34px;
-    font-weight: 200;
-    line-height: 18px;
-    opacity: 0.5;
-    padding: 4px 10px 0px;
-    position: static;
-    height: 30px;
-    width: 15px;
-    }
 
 
 
 /* Mobile Only */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .page-header, .control-box {
     text-align: center;
     } 
@@ -110,6 +65,56 @@ a {
     }
 }
 
+* {box-sizing:border-box} */
+
+/* Slideshow container */
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
 
 
 
@@ -129,30 +134,81 @@ a {
 <div class="span12">
 
     <div class="page-header">
-        <h3>Featured products</h3>
+        <h3></h3>
         {{-- <p>Demo</p> --}}
     </div>
 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    {{-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/03/24/1/d/5/b/1679644266077_org.jpg" alt="First slide" width= 2000px , height= 500px>
+            <img class="d-block w-100" src="https://www.xtmobile.vn/vnt_upload/news/07_2019/tt-sale-locdaunam-17-2.jpg" alt="First slide" width= 1500px , height= 400px>
           </div>
     </div>
-    
+     --}}
     {{-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/03/24/1/d/5/b/1679644266077_org.jpg" alt="First slide">
+            <img class="d-block w-100" src="https://laptopmy.vn/image/lenovo/laptop-lenovo-banner-laptopmyvn.jpg" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/04/05/4/8/7/f/1680683734315_org.jpg" alt="Second slide">
+            <img class="d-block w-100" src="https://cdn.tgdd.vn/Files/2022/09/30/1473177/cau-hinh-iphone-14-pro-max-2.jpg" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://avatar-ex-swe.nixcdn.com/slideshow/2023/03/28/5/4/c/0/1679989124264_org.jpg" alt="Third slide">
+            <img class="d-block w-100" src="https://mpics.mgronline.com/pics/Images/564000008078101.JPEG" alt="Third slide">
           </div>
         </div>
-      </div> --}}
+    </div> --}}
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  {{-- <h2>Carousel Example</h2>   --}}
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://www.greycom.com.cy/image/catalog/Front%20Banner/AppleWatchSEBan.jpg" alt="Los Angeles" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/a47a3b1a-34e3-44e9-a667-c22e2c66b501.__CR0,0,1464,600_PT0_SX1464_V1___.png" alt="Chicago" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="https://www.sunmobile.com.hk/TDWorld/r/cms/www/iPhone14_Web_Banner/iPhone_14_Pro_Web_Banner_eng.jpg?v=0909" alt="New york" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+
         
     {{-- <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
@@ -191,20 +247,11 @@ a {
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script> 
+{{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js'></script>
-<script id="rendered-js" >
-
-// Carousel Auto-Cycle
-$(document).ready(function () {
-  $('.carousel').carousel({
-    interval: 3000 });
-
-});
-{{-- //# sourceURL=pen.js
-    </script>
+<script id="rendered-js" ></script> --}}
 </body>
 
 </html>
