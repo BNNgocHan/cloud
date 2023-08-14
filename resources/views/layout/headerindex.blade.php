@@ -14,10 +14,6 @@
                 <a href="#" class="button-container">
                     <h2>TRENDING</h2>
                 </a>
-                
-                {{-- <a href="#" class="button-container">
-                    <h2>SEARCH</h2>
-                </a> --}}
                 <a href="{{ route('dashboard')}}" class="button-container">
                     <h2>ADD NEW PRODUCT</h2>
                 </a>
@@ -28,16 +24,7 @@
             </div>
             @if ($user)
 <div class="avatar">
-  <!-- <img src="{{ $user->avatar_url }}" alt="AVATAR" class="avatar-img" onclick="toggleAccountInfo()"> -->
-  <img src="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-avatar-pattern-flat-cartoon-user-image_1200105.jpg" alt="AVATAR" class="avatar-img" onclick="toggleAccountInfo()" style="margin-left: 100px"><a style="margin-left: 5px; "
->{{ $user->display_name }}</a> 
-{{-- <div id="account-info" class="account-info show" style="height: 205px;margin-left: 570px;">
-    <p class="info">Display Name: {{ $user->display_name }}</p>
-    <p class="info">Username: {{ $user->username }}</p>
-    <p class="info">Email: {{ $user->email }}</p>
-    <p class="info">Role: {{ $user->role }}</p> --}}
-
-
+  <img src="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-avatar-pattern-flat-cartoon-user-image_1200105.jpg" alt="AVATAR" class="avatar-img" onclick="toggleAccountInfo()" style="margin-left: 100px"><a style="margin-left: 5px; ">{{ $user->display_name }}</a> 
     <form method="POST" action="{{ route('logout') }}">
       @csrf
       
