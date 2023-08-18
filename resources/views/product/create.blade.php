@@ -1,166 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<html>
+    <head>
+        <title>Manage Product</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+        <style>
+            /* Global styles */
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
 
-<body>
+            /* Container styles */
+            .content-container {
+                width: 80%; /* Adjust the width as needed */
+                padding: 20px;
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
 
+            /* Form styles */
+            form {
+                margin-top: 20px;
+            }
 
-</html>
-@include('product.layout')
-@extends('admin.layout.index')
-@section('content')
+            .form-group {
+                margin-bottom: 20px;
+            }
 
-    <div class="row">
+            label {
+                font-weight: bold;
+            }
 
-        <div class="col-lg-12 margin-tb">
+            input[type="text"],
+            input[type="number"],
+            select,
+            textarea {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
 
-            <div class="pull-left">
+            input[type="file"] {
+                padding: 5px;
+            }
 
-                <h2>Add New Food</h2>
+            textarea {
+                resize: vertical;
+            }
 
-            </div>
+            .btn-primary {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
 
-            <div class="pull-right">
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
 
-                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
+            .alert-danger {
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+                padding: 8px;
+                margin-top: 10px;
+            }
 
-            </div>
+            .alert-danger ul {
+                margin: 0;
+                padding-left: 20px;
+            }
 
-        </div>
+            /* Responsive styles */
+            @media screen and (max-width: 768px) {
+                input[type="text"],
+                input[type="number"],
+                select,
+                textarea {
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
 
-    </div>
+    <body>
+        <div class="content-container">
+            <div class="row">
+                <div class="col-lg-12 margin-tb">
+                    <div class="pull-left">
+                        <h2>Add New Product</h2>
+                    </div>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-
-            <ul>
-
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-
-            </ul>
-
-        </div>
-    @endif
-
-    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
-
-        @csrf
-
-        <div class="row">
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Name:</strong>
-
-                    <input type="text" name="name" class="form-control" placeholder="Name">
-
-                </div>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-
-                        <div class="form-group">
-
-                            <strong>Image:</strong>
-
-                            <input type="file" class="form-control" placeholder="Image" value="" name="image[]"
-                                id="" multiple />
-
-
-                        </div>
+                    <div class="pull-right">
+                        <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
 
-                <div class="form-group">
-
-                    <strong>Country:</strong>
-                    <div class="d-flex justify-content-center links">
-                        <a href="{{ route('publisher.create') }}">Add New Country</a>
-                    </div>
-                    <select name="publisher" class="form-control">
-
-
-                        @foreach ($publishers as $publisher)
-                            <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
                         @endforeach
-
-                    </select>
-
+                    </ul>
                 </div>
+            @endif
 
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Price:</strong>
-
-                    <input type="number" name="price" class="form-control" placeholder="Price">
-
-                </div>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <div class="form-group">
-
-                    <strong>Description:</strong>
-
-                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
-
-                </div>
-
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
+            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <label>Categories:</label>
-                            <div class="d-flex justify-content-center links">
-                                <a href="{{ route('category.create') }}">Add New Category</a>
-                            </div>
-
-                            @foreach ($categories as $category)
-                                <div>
-                                    <input type="checkbox" name="categories[]" id="category_{{ $category->id }}"
-                                        value="{{ $category->id }}">
-                                    <label for="category_{{ $category->id }}">{{ $category->name }}</label>
-                                </div>
-                            @endforeach
+                            <strong>Name:</strong>
+                            <input type="text" name="name" class="form-control" placeholder="Name">
                         </div>
                     </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Price:</strong>
+                            <input type="number" name="price" class="form-control" placeholder="Price">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Image:</strong>
+                            <input type="file" class="form-control" placeholder="Image" value="" name="imageProduct" />
+                        </div>
+                    </div>
+            
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Category:</strong>
+                            <select name="category" class="form-control">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Description:</strong>
+                            <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-            </div>
-
+            </form>
         </div>
-
-    </form>
-
-@endsection
-</body>
+    </body>
+</html>

@@ -1,4 +1,4 @@
-@extends('category.layout')
+@extends('product.layout')
 
 @section('content')
     <div class="row">

@@ -1,109 +1,56 @@
-@include('product.layout')
-@extends('admin.layout.index')
+@extends('product.layout')
+
 @section('content')
+<div class="container">
     <div class="row">
-
         <div class="col-lg-12 margin-tb">
-
             <div class="pull-left">
-
-                <h2> Show Food</h2>
-
+                <h2>Show Product</h2>
             </div>
 
             <div class="pull-right">
-
-                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
-
+                <a class="btn btn-primary" href="{{ route('products.index') }}">Back</a>
             </div>
-
         </div>
-
     </div>
 
     <div class="row">
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Name:</strong>
-
-                {{ $product->name }}
-
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">{{ $product->name }}</h4>
+                </div>
+                <div class="card-body">
+                    <img src="{{ asset('image/product/'.$product->image) }}" alt="" class="img-fluid product-image">
+                </div>
             </div>
-
         </div>
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Image:</strong>
-
-                @foreach ($product->image as $image)
-                    <img src="{{ asset('image/product/' . $image->image) }}" alt="" style="margin: 15px" height=150
-                        width=250>
-                @endforeach
-
-
-
-
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Product Details</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Price:</strong> {{ $product->price }}</p>
+                    <p><strong>Category:</strong> {{ $product->category->name }}</p>
+                    <p><strong>Details:</strong> {{ $product->description }}</p>
+                </div>
             </div>
-
         </div>
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Publisher:</strong>
-
-                {{ $product->publisher->name }}
-
-            </div>
-
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Category:</strong>
-
-                <ul class="inline-list">
-                    @foreach ($product->category as $category)
-                        <li>{{ $category->name }}</li>
-                    @endforeach
-                </ul>
-
-            </div>
-
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Price:</strong>
-
-                {{ $product->price }}
-
-            </div>
-
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Details:</strong>
-
-                {{ $product->description }}
-
-            </div>
-
-        </div>
-
     </div>
+</div>
+
+<style>
+    .product-image {
+        max-width: 200px;
+    }
+
+    .container {
+        margin-top: 30px
+    }
+
+    .card-body {
+        margin-left: 10px
+    }
+</style>
 @endsection

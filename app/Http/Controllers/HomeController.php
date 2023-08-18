@@ -2,29 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Image;
-use App\Models\Users;
+
+
+
 class HomeController extends Controller
 {
-    public function show($id)
+    public function index()
     {
-        $product = Product::find($id);
-        $user = Users::find($id);
-
-        return view('page.viewproduct', ['product' => $product,'user' => $user ]);
+        $user = auth()->user(); // lấy thông tin người dùng đã đăng nhập
+        return view('index', compact('user'));
+    
     }
-    public function search()
+
+    public function indexx()
+
     {
-
-        $search = $_GET['query'];
-
-        $searchs = Product::where('name', 'LIKE', '%' . $search . '%')
-            ->orWhere('description', 'LIKE', '%' . $search . '%')
-            ->get();
-
-        return view('page.search', compact('searchs'));
+    
+    $products = Product::all();
+    $user = auth()->user();
+    return view('index', compact("products", "user"));
+    
     }
+
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    public function adminlogin()
+    {
+        return view('auth.adminlogin');
+    }
+
+    public function dashboard()
+    {
+        $user = auth()->user(); // lấy thông tin người dùng đã đăng nhập
+        return view('dashboard', compact('user'));
+    }
+
 }

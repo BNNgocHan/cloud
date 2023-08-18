@@ -1,336 +1,112 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<style>
-    body {
-        background-image: url('https://cagd.ask.fm/49f/e3da1/f6e2/4fde/ab67/b216ff075735/animated/1360997.gif');
-    }
-
-    .register {
-
-
-
-        margin-top: 3%;
-
-        padding: 3%;
-
-    }
-
-    .register-left {
-
-        text-align: center;
-
-        color: #fff;
-
-        margin-top: 4%;
-
-    }
-
-    .register-left input {
-
-        border: none;
-
-        border-radius: 1.5rem;
-
-        padding: 2%;
-
-        width: 60%;
-
-        background: #f9f8fa;
-
-        font-weight: bold;
-
-        color: #383d41;
-
-        margin-top: 30%;
-
-        margin-bottom: 3%;
-
-        cursor: pointer;
-
-    }
-
-    .register-right {
-
-        background: #f8f9fa;
-
-        border-top-left-radius: 10% 50%;
-
-        border-bottom-left-radius: 10% 50%;
-
-    }
-
-    .register-left img {
-
-        margin-top: 15%;
-
-        margin-bottom: 5%;
-
-        width: 35%;
-
-        -webkit-animation: mover 2s infinite alternate;
-
-        animation: mover 1s infinite alternate;
-
-    }
-
-    @-webkit-keyframes mover {
-
-        0% {
-            transform: translateY(0);
-        }
-
-        100% {
-            transform: translateY(-20px);
-        }
-
-    }
-
-    @keyframes mover {
-
-        0% {
-            transform: translateY(0);
-        }
-
-        100% {
-            transform: translateY(-20px);
-        }
-
-    }
-
-    .register-left p {
-
-        font-weight: lighter;
-
-        padding: 12%;
-
-        margin-top: -9%;
-
-    }
-
-    .register .register-form {
-
-        padding: 10%;
-
-        margin-top: 10%;
-
-    }
-
-    .btnRegister {
-
-        float: right;
-
-        margin-top: 10%;
-
-        border: none;
-
-        border-radius: 1.5rem;
-
-        padding: 2%;
-
-        background: #af4719;
-
-        color: #fff;
-
-        font-weight: 600;
-
-        width: 50%;
-
-        cursor: pointer;
-
-    }
-
-    .register .nav-tabs {
-
-        margin-top: 3%;
-
-        border: none;
-
-        background: #0062cc;
-
-        border-radius: 1.5rem;
-
-        width: 28%;
-
-        float: right;
-
-    }
-
-    .register .nav-tabs .nav-link {
-
-        padding: 2%;
-
-        height: 34px;
-
-        font-weight: 600;
-
-        color: #fff;
-
-        border-top-right-radius: 1.5rem;
-
-        border-bottom-right-radius: 1.5rem;
-
-    }
-
-    .register .nav-tabs .nav-link:hover {
-
-        border: none;
-
-    }
-
-    .register .nav-tabs .nav-link.active {
-
-        width: 100px;
-
-        color: #0062cc;
-
-        border: 2px solid #0062cc;
-
-        border-top-left-radius: 1.5rem;
-
-        border-bottom-left-radius: 1.5rem;
-
-    }
-
-    .register-heading {
-
-        text-align: center;
-
-        margin-top: 8%;
-
-        margin-bottom: -15%;
-
-        color: #495057;
-
-    }
-</style>
-
-<!------ Include the above in your HEAD tag ---------->
-
-@if (session('message'))
-    <span class="aler alert-danger">
-
-        <strong>{{ session('message') }}</strong>
-
-    </span>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{asset('css/cssregister.css ')}}">
+    <head>
+  
+</head>
+
+</head>
+<body>
+    <div class="overlay">
+<form method="POST" action="{{ route('register') }}">
+    @csrf
+
+   <!--   con = Container  for items in the form-->
+   <div class="con">
+   <!--     Start  header Content  -->
+   <header class="head-form">
+      <h2>Register</h2>
+      @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 
-<div class="container register">
+   </header>
+   <!--     End  header Content  -->
+   <br>
+   <div class="field-set">
+     
+      <!--   user name -->
+         <span class="input-item">
+           <i class="fa fa-user-circle"></i>
+         </span>
+        <!--   user name Input-->
+         <input class="form-input" id="txt-input" type="text" placeholder="Username" name="username" value="{{ old('username') }}"  required>
+     
+      <br>
 
-    <div class="row">
+      <!--   display name -->
+      <span class="input-item">
+           <i class="fa fa-user-circle"></i>
+         </span>
+        <!--   user name Input-->
+         <input class="form-input" id="txt-input" type="text" placeholder="Display Name" name="display_name" value="{{ old('display_name') }}"  required>
+     
+      <br>
 
-        <div class="col-md-3 register-left">
+      <!--   email -->
+         <span class="input-item">
+           <i class="fa fa-user-circle"></i>
+         </span>
+        <!--   email Input-->
+         <input class="form-input" id="txt-input" type="text" placeholder="Email" name="email" value="{{ old('email') }}" required>
+     
+      <br>
+     
+           <!--   Password -->
+     
+      <span class="input-item">
+        <i class="fa fa-key"></i>
+       </span>
+      <!--   Password Input-->
+      <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+     
 
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtIh6GQVuefdBhQVqXFu3nXmev0pkFP6zewg&usqp=CAU"
-                alt="" />
+      <br>
 
-            <h3>Welcome</h3><br><br><br>
+          <!--   Password -->
+     
+      <span class="input-item">
+        <i class="fa fa-key"></i>
+       </span>
+      <!--   Password Input-->
+      <input class="form-input" type="password" placeholder="Confirm Password" id="pwd"  name="password_confirmation" required>
+     
 
-            <a class="btn btn-success" href="{{ route('welcome.login') }}"> Login</a><br />
+      <br>
+<!--        buttons -->
+<!--      button LogIn -->
+      <button class="log-in"> Register </button>
+   </div>
+  
+<!--   other buttons 
+                                            <div class="other">
+                                                <button class="btn submits frgt-pass">Already Have An Account</button>
 
-        </div>
-
-        <div class="col-md-9 register-right">
-
-            <div class="tab-content" id="myTabContent">
-
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                    <h3 class="register-heading">Register</h3>
-
-                    <div class="row register-form">
-
-                        <div class="col-md-6">
-
-                            <form action="{{ route('auth.register') }}" method="POST" enctype="multipart/form-data">
-
-                                @csrf
-
-                                <!-- Equivalent to... -->
-                                <div class="form-group">
-
-                                    <input type="text" class="form-control" placeholder="Full Name" value=""
-                                        name="name" />
-                                    @if ($errors->has('name'))
-                                        {{ $errors->first('name') }}
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-
-                                    <input type="text" class="form-control" placeholder="Country" value=""
-                                        name="country" />
-
-                                    @if ($errors->has('country'))
-                                        {{ $errors->first('country') }}
-                                    @endif
-                                </div>
-                                <div class="form-group">
-
-                                    <input type="text" class="form-control" placeholder="Phone number" value=""
-                                        name="numberphone" />
-                                    @if ($errors->has('numberphone'))
-                                        {{ $errors->first('numberphone') }}
-                                    @endif
-                                </div>
-                                <div class="form-group">
-
-                                    <input type="email" class="form-control" placeholder="Your Email *" value=""
-                                        name="email" />
-                                    @if ($errors->has('email'))
-                                        {{ $errors->first('email') }}
-                                    @endif
-                                </div>
-
+                                                <button class="btn submits sign-up" href="{{ route('login')}}" formnovalidate>Log In Now
+                                                <button type="submit" class="btn submits sign-up" name="register" value="register">Log In Now
+                                                    <a class="btn submits sign-up" href="{{ route('login')}}">Log In Now
+                                                <i class="fa fa-user-plus" ></i>
+                                                </button>
+                -->
+   </div>
+     
+<!--   End Conrainer  -->
+  </div>
+  
+  <!-- End Form -->
+</form>
+</div>
+</body>
 
 
-                                <div class="form-group">
-
-                                    <input type="password" class="form-control" placeholder="Password *" value=""
-                                        name="password" />
-
-                                    @if ($errors->has('password'))
-                                        {{ $errors->first('password') }}
-                                    @endif
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <input type="password" class="form-control" placeholder="Confirm Password *"
-                                        value="" name="password_confirmation" />
-
-                                </div>
-                                <div class="form-group">
-
-                                    <select class="form-control" name="role">
-
-                                        @foreach ($roles as $role)
-                                            @if ($role->id !== 1)
-                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-
-                                    @if ($errors->has('role'))
-                                        {{ $errors->first('role') }}
-                                    @endif
-                                </div>
-
-                                <input type="submit" class="btnRegister" value="Register" />
-
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div
+</html>

@@ -1,76 +1,72 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Account;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ControllerPublisher;
-use App\Http\Controllers\CartProductController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AmnhacController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BrandController;
+use Illuminate\Support\Facades\Auth;
+
+// đăng ký
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+
+// trang chủ           
+Route::get('/', [HomeController::class, 'indexx'])->name('index');
+Route::get('/index', [HomeController::class, 'indexx'])->name('index');
+//trang dashboard
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard')->middleware('checklogin::class');;
+
+//logout tài khoản trang index
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|ch
-*/
 
-Route::get('/admin/home', [ProductController::class, 'admin'])->name('admin.home');
+//đăng nhập trang chủ
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
-Route::get('/food/index', [ProductController::class, 'index'])->name('product.index');
-Route::get('/food/create', [ProductController::class, 'create'])->name('product.create');
-Route::get('/food:delete{id}', [ProductController::class, 'destroy'])->name('product.destroy');
-Route::get('/food/edit{id}', [ProductController::class, 'edit'])->name('product.edit');
-Route::post('/food/update{id}', [ProductController::class, 'update'])->name('product.update');
-Route::get('/food/show{id}', [ProductController::class, 'show'])->name('product.show');
-Route::post('/food/store', [ProductController::class, 'store'])->name('product.store');
-Route::get('/food/home', [ProductController::class, 'home'])->name('product.home');
-
-Route::post('/account/login', [Account::class, 'store'])->name('auth.register');
-Route::get('/register', [Account::class, 'show'])->name('welcome.register');
-Route::get('/', [Account::class, 'showLogin'])->name('welcome.login');
-Route::get('/logout', [Account::class, 'logout'])->name('logout');
-Route::post('/login', [Account::class, 'login'])->name('auth.login');
-
-Route::get('/account/edit{id}', [Account::class, 'edit'])->name('welcome.update');
-Route::post('/account/update{id}', [Account::class, 'update'])->name('auth.update');
-Route::get('/account/index', [Account::class, 'showAccount'])->name('welcome.index');
-Route::get('/account:delete{id}', [Account::class, 'destroy'])->name('welcome.destroy');
+//đăng nhập trang dashboard
+Route::post('/adminlogin', [AdminLoginController::class, 'adminlogin'])->name('adminlogin');
+Route::get('/adminlogin', [AdminLoginController::class, 'showAdminLoginForm'])->name('adminlogin');
 
 
-Route::get('/publisher/index', [ControllerPublisher::class, 'index'])->name('publisher.index');
-Route::get('/publisher/create', [ControllerPublisher::class, 'create'])->name('publisher.create');
-Route::get('/publisher:delete{id}', [ControllerPublisher::class, 'destroy'])->name('publisher.destroy');
-Route::get('/publisher/edit{id}', [ControllerPublisher::class, 'edit'])->name('publisher.edit');
-Route::post('/publisher/update{id}', [ControllerPublisher::class, 'update'])->name('publisher.update');
-Route::get('/publisher/show{id}', [ControllerPublisher::class, 'show'])->name('publisher.show');
-Route::post('/publisher/store', [ControllerPublisher::class, 'store'])->name('publisher.store');
+//hiển thị user 
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index_user');
 
-Route::get('/profile/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
-Route::get('/profile/edit', [ProfileController::class, 'edit_profile'])->name('edit_profile');
-Route::put('/profile/update', [ProfileController::class, 'update_profile'])->name('update_profile');
 
-Route::get('/profile/change-password', [ProfileController::class, 'change_password'])->name('change_password');
-Route::post('/profile/update-password', [ProfileController::class, 'update_password'])->name('update_password');
+//hiển thị product
+Route::get('/product', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
 
-Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
-Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-Route::get('/category:delete{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-Route::get('/category/edit{id}', [CategoryController::class, 'edit'])->name('category.edit');
-Route::post('/category/update{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::get('/category/show{id}', [CategoryController::class, 'show'])->name('category.show');
-Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+//thêm sửa xóa sp
+Route::get('/product/index', [ProductController::class, 'index'])->name('products.index')->middleware('checklogin::class');;
+Route::get('/product/create', [ProductController::class, 'create'])->name('products.create')->middleware('checklogin::class');;
+Route::get('/product/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('checklogin::class');;
+Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('products.edit')->middleware('checklogin::class');;
+Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('checklogin::class');;
+Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('products.show')->middleware('checklogin::class');;
+Route::post('/product/store', [ProductController::class, 'store'])->name('products.store')->middleware('checklogin::class');;
 
-Route::get('cart', [CartProductController::class, 'cart'])->name('cart');
-Route::get('add-to-cart/{id}', [CartProductController::class, 'addToCart'])->name('add_to_cart');
-Route::patch('update-cart', [CartProductController::class, 'update'])->name('update_cart');
-Route::delete('remove-from-cart', [CartProductController::class, 'remove'])->name('remove_from_cart');
+Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index')->middleware('checklogin::class');;
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create')->middleware('checklogin::class');;
+Route::get('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware('checklogin::class');;
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware('checklogin::class');;
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware('checklogin::class');;
+Route::get('/category/show/{id}', [CategoryController::class, 'show'])->name('category.show')->middleware('checklogin::class');;
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store')->middleware('checklogin::class');;
 
-Route::get('/food/detail{id}', [HomeController::class, 'show'])->name('home.show');
-Route::get('/search', [HomeController::class, 'search'])->name('pages.search');
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+
+Route::get('/brand/index', [BrandController::class, 'index'])->name('brand.index')->middleware('checklogin::class');;
+Route::get('/brand/create', [BrandController::class, 'create'])->name('brand.create')->middleware('checklogin::class');;
+Route::get('/brand/delete/{id}', [BrandController::class, 'destroy'])->name('brand.destroy')->middleware('checklogin::class');;
+Route::get('/brand/edit/{id}', [BrandController::class, 'edit'])->name('brand.edit')->middleware('checklogin::class');;
+Route::post('/brand/update/{id}', [BrandController::class, 'update'])->name('brand.update')->middleware('checklogin::class');;
+Route::get('/brand/show/{id}', [BrandController::class, 'show'])->name('brand.show')->middleware('checklogin::class');;
+Route::post('/brand/store', [BrandController::class, 'store'])->name('brand.store')->middleware('checklogin::class');;

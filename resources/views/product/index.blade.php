@@ -1,63 +1,80 @@
-@include('product.layout')
-@extends('admin.layout.index')
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Food Management</h2>
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Manage Product</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+        
+</head>
+<body>
+    <div id="wrapper">
+        @include('product.sidebar')
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 margin-tb">
+                            <div class="pull-left">
+                                <h2>Product Management</h2>
+                            </div>
+
+                            <div class="pull-right">
+                                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Image</th>
+                            <th>Details</th>
+                            <th width="500px">Action</th>
+                        </tr>
+
+                        @foreach($product->reverse() as $key => $product)
+
+                        <tr>
+
+                            <td>{{$key+1}}</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->category->name }}</td>
+                            <td><img src="{{ asset('image/product/'.$product->image) }}" alt="" border=3
+                                    height=100 width=100></td>
+                            <td>{{ $product->description }}</td>
+                            <td>
+                                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+
+                                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                                    <a class="btn btn-primary" href="{{ route('products.destroy',$product->id) }}">Delete</a>
+
+                                </form>
+                            </td>
+                        </tr>
+
+                        @endforeach
+
+                    </table>
+                </div>
             </div>
-            <br><br>
-            <div class="pull-left">
-                <a class="btn btn-success" href="{{ route('product.create') }}"> Add New Food</a>
-            </div>
+            @include('layout.footer')
+
+
+            @include('layout.js')
         </div>
     </div>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-    <table class="table table-bordered" ,border="0">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Country</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Details</th>
-            <th width="280px">Action</th>
-        </tr>
-        @foreach ($products as $product)
-            <tr>
-                <td>{{ $product->id }}</td>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->publisher->name }}</td>
-                <td>
-
-                    @if (isset($product->image) && count($product->image) > 0)
-                        <img class="images-detail" src="{{ asset('image/product/' . $product->image[0]->image) }}"
-                            alt="" height=150 width=150>
-                    @else
-                        <img class="images-detail" src="{{ asset('image/default.jpg') }}" alt="" height=150
-                            width=150>
-                    @endif
-                </td>
-
-
-                <td>{{ $product->price }} $</td>
-
-                <td>{{ $product->description }}</td>
-
-                <td>
-
-                    <form action="{{ route('product.destroy', $product->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('product.show', $product->id) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('product.edit', $product->id) }}">Edit</a>
-                        <a class="btn btn-primary" href="{{ route('product.destroy', $product->id) }}">Delete</a>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-
-    </table>
-@endsection
+</body>
+</html>
